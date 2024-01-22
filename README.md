@@ -1,2 +1,2 @@
-# W-GER
-Web App designed for Sports Betters 
+# Tabs
+Mobile App designed to split bills easliy
