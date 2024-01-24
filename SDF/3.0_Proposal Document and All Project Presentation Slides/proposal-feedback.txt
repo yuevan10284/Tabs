@@ -1,0 +1,39 @@
+
+
+Evaluation and Feedback
+CMSI 4072 project ~ Spring 2024
+Mitchell Cootauco, Owen Hunger,
+   Connor Savage, and Evan Yu
+TABS project
+==============================
+
+Proposal Document:
+------------------
+   Nice work on the document.  The description is at high enough level to
+   give the reader an overview, and yet low enough level to let the reader
+   know what some of the planned activities will be as well as some of the
+   technologies that are that you are using, and what they will be used for.
+
+   The justification section is also well done, specifying the MVP focus
+   for the initial project goal as well as anecdotal evidence that others
+   think it's an interesting idea.  Your self-reflection is evident in the
+   way you express that the project is well-balanced and that you possess
+   the required experience.
+
+Proposal Presentation:
+----------------------
+   Good job on the presentation!  The slides look nice and have your usual
+   humor infused in them.  I like the graphics of panic and 'kalm'...
+
+   You did well with dividing up the presentation so everyone got a turn.
+   You also did well talking to the audience, not the slides.  A couple of
+   your slides have a little too much information ~ try for fewer bullets so
+   that you are talking more.  If the audience misses something, they will
+   ask you!
+
+   Well done overall.
+
+=============================================================================
+your score:  5% out of 5% which is an A-plus
+
+Great job on this presentation and proposal and great start to the semester!
