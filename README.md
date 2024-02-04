@@ -1,4 +1,6 @@
-# My Universal React Project
+# Tabs Mobile Application
+This mobile application allows users to easily split and assign items in a bill to each other by simply taking a picutre or scanning a reciept!
+
 <p>
   <!-- iOS -->
   <a href="https://itunes.apple.com/app/apple-store/id982107779">
@@ -13,6 +15,12 @@
     <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
   </a>
 </p>
+
+## 🔗 Developers
+* [@Evan Yu](https://github.com/yuevan10284)
+* [@Owen Hunger](https://github.com/ohunger)
+* [@Mitchell Cootauco](https://github.com/Mcootauc)
+* [@Connor Savage](https://github.com/connorsavage)
 
 ## 🚀 How to use
 
