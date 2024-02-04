@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import QRScanner from './QRScanner';
 import PlantDataInput from './PlantDataInput';
 import LoginScreen from './LoginScreen'; 
 import SignUpScreen from './SignUpScreen'; 

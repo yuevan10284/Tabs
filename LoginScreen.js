@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons'; 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
-import PlantDataForm from './PlantDataForm';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigation = useNavigation(); 
 
     const handleLogin = async () => {
         try {
@@ -18,34 +20,47 @@ const LoginScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Password"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-                onSubmitEditing = {handleLogin}
-                returnKeyType = 'done'
-            />
-            <Button title="Login" onPress={handleLogin} />
+        <View style={styles.fullContainer}>
+            <View style={styles.header}>
+                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                    <Icon name="arrow-back" size={30} color="#000" />
+                </TouchableOpacity>
+            </View>
+            <View style={styles.container}>
+                <Text style={styles.title}>Login</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Password"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
+                    onSubmitEditing={handleLogin}
+                    returnKeyType='done'
+                />
+                <Button title="Login" onPress={handleLogin} />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    fullContainer: {
+        flex: 1,
+        paddingTop: 50, 
+    },
+    header: {
+        marginLeft: 10, 
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: 20,
-        backgroundColor: '#5dc762'
     },
     title: {
         fontSize: 24,
@@ -58,7 +73,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 12,
         paddingHorizontal: 8
-    }
+    },
 });
 
 export default LoginScreen;
