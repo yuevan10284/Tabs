@@ -1,0 +1,37 @@
+
+
+Evaluation and Feedback
+CMSI 4072 project ~ Spring 2024
+Mitchell Cootauco, Owen Hunger,
+   Connor Savage, and Evan Yu
+TABS project
+=============================================
+
+Software Development Plan Document:
+---------------------------------------------
+-- General Comments
+   Very good work on this document!  The introduction is very complete and
+   the explanations are good throughout.
+
+-- Introduction Section
+   Perfect.  No further comments and no adjustments needed.
+
+-- Project Resources Section
+   Perfect.  No further comments and no adjustments needed.
+
+-- Project Organization Section
+   Perfect.  No further comments and no adjustments needed.
+
+-- Project Schedule Section
+   The schedule section is listed as "Gantt Chart" but you have done a PERT
+   chart.  The chart and schedule all look good, but it's misleading to have
+   the section name be something that isn't there.  You should change that
+   section name to reflect its content.
+
+   That's the only thing you need to do; full credit in spite of the 'nit'.
+
+=============================================================================
+your score:  10% out of 10% which is an A-plus
+
+You are good to go.  Full credit for both the first and second submission
+as long as you make that one minor change.
