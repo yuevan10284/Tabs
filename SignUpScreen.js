@@ -1,28 +1,42 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons'; 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { FIREBASE_AUTH } from './firebaseConfig';
+import React, { useState } from "react";
+import {
+    View,
+    Text,
+    TextInput,
+    Button,
+    StyleSheet,
+    Alert,
+    TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/Ionicons";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FIREBASE_AUTH } from "./firebaseConfig";
 
 const SignUpScreen = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigation = useNavigation(); 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigation = useNavigation();
 
     const handleSignUp = async () => {
         try {
-            await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password);
-            navigation.navigate('HomeScreen');
+            await createUserWithEmailAndPassword(
+                FIREBASE_AUTH,
+                email,
+                password
+            );
+            navigation.navigate("HomeScreen");
         } catch (error) {
-            Alert.alert('Error', error.message);
+            Alert.alert("Error", error.message);
         }
-    }
+    };
 
     return (
         <View style={styles.fullContainer}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("HomeScreen")}
+                >
                     <Icon name="arrow-back" size={30} color="#000" />
                 </TouchableOpacity>
             </View>
@@ -41,7 +55,7 @@ const SignUpScreen = () => {
                     value={password}
                     onChangeText={setPassword}
                     onSubmitEditing={handleSignUp}
-                    returnKeyType='done'
+                    returnKeyType="done"
                 />
                 <Button title="Sign Up" onPress={handleSignUp} />
             </View>
@@ -52,27 +66,27 @@ const SignUpScreen = () => {
 const styles = StyleSheet.create({
     fullContainer: {
         flex: 1,
-        paddingTop: 50, 
+        paddingTop: 50,
     },
     header: {
-        marginLeft: 10, 
+        marginLeft: 10,
     },
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: "center",
         paddingHorizontal: 20,
     },
     title: {
         fontSize: 24,
         marginBottom: 16,
-        textAlign: 'center'
+        textAlign: "center",
     },
     input: {
         height: 40,
-        borderColor: 'gray',
+        borderColor: "gray",
         borderWidth: 1,
         marginBottom: 12,
-        paddingHorizontal: 8
+        paddingHorizontal: 8,
     },
 });
 
