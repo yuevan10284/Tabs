@@ -1,0 +1,26 @@
+[
+  {
+    "itemName": "SHIREEN",
+    "price": 5940
+  },
+  {
+    "itemName": "LOSEE RD\nNORTH LAS VEGAS NV",
+    "price": 9081
+  },
+  {
+    "itemName": "VINYL GLOVES",
+    "price": 19339700848
+  },
+  {
+    "itemName": "X\nAJAX DISHLIM",
+    "price": 3500049863
+  },
+  {
+    "itemName": "SCH PARS",
+    "price": 5210000738
+  },
+  {
+    "itemName": "VINYL GLOVES",
+    "price": 1539
+  }
+]

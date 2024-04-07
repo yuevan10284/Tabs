@@ -1,0 +1,42 @@
+[
+  {
+    "itemName": "AE",
+    "price": 341
+  },
+  {
+    "itemName": "MA",
+    "price": 2338
+  },
+  {
+    "itemName": "CHEESE SHOP\nJSPH ORG HUMMUS",
+    "price": 5.99
+  },
+  {
+    "itemName": "F\nFROZEN FOOD\nSB SW BLEND",
+    "price": 102
+  },
+  {
+    "itemName": "AMYS SOUP LS LEN BORE\nSOUP LENTIL SHS E\nSOUP LENTIL",
+    "price": 3.19
+  },
+  {
+    "itemName": "F\nAMYS LS CHNKY TO",
+    "price": 3.99
+  },
+  {
+    "itemName": "F\nAMYS LS CHNKY TO",
+    "price": 3.99
+  },
+  {
+    "itemName": "F\nPRODUCE\nDOLE SPINACH",
+    "price": 10
+  },
+  {
+    "itemName": "F\nTAX",
+    "price": 0
+  },
+  {
+    "itemName": "BALANCE",
+    "price": 35.01
+  }
+]
