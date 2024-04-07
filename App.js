@@ -5,6 +5,7 @@ import ReceiptDataForm from "./ReceiptDataForm";
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import SignUpScreen from "./SignUpScreen";
+import ScanReceiptScreen from "./ScanReceiptScreen"; // Import ScanReceiptScreen
 
 const Stack = createNativeStackNavigator();
 
@@ -20,9 +21,15 @@ export default function App() {
                 <Stack.Screen
                     name="ReceiptDataForm"
                     component={ReceiptDataForm}
+                    options={{ headerShown: false }} 
                 />
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="SignUp" component={SignUpScreen} />
+                <Stack.Screen 
+                    name="ScanReceiptScreen" 
+                    component={ScanReceiptScreen} 
+                    options={{ headerShown: false }} 
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
