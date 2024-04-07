@@ -1,121 +1,94 @@
-import {
-    View,
-    Text,
-    Button,
-    StyleSheet,
-    TextInput,
-    Switch,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { FIRESTORE_DB } from "./firebaseConfig";
-import { useRoute } from "@react-navigation/native";
-import Slider from "@react-native-community/slider";
-
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'; 
 const ReceiptDataForm = ({ navigation }) => {
-    const [Receipt, setReceipt] = useState("");
-    const [isDead, setIsDead] = useState(false);
-    const [ReceiptHealth, setReceiptHealth] = useState(5);
+  
+  // Function placeholders for menu options
+  const goToGroups = () => {
+    // navigation.navigate('GroupChats');
+  };
 
-    const route = useRoute();
+  const goToScan = () => {
+    navigation.navigate('ScanReceiptScreen');
+  };
 
-    useEffect(() => {
-        // Access the email parameter from the route params
-        const { email } = route.params || {};
-    }, [route]);
+  const goToPay = () => {
+    // navigation.navigate('PayLater');
+  };
 
-    const addReceipt = async () => {
-        try {
-            const docRef = await addDoc(
-                collection(FIRESTORE_DB, "ReceiptsData"),
-                {
-                    ReceiptID: Receipt,
-                    dead: isDead,
-                    ReceiptHealth: ReceiptHealth,
-                    email: route.params.email.toLowerCase(),
-                    timestamp: serverTimestamp(),
-                }
-            );
-            console.log("Added Receipt with ID: ", docRef.id);
-            setReceipt("");
-            setIsDead(false);
-            setReceiptHealth(5); // Reset all the Receipt status variables
-        } catch (error) {
-            console.error("Error adding Receipt: ", error);
-        }
-    };
+  return (
+    <View style={styles.container}>
+      {/* Profile Section */}
+      <View style={styles.profileSection}>
+        <Icon name="person-circle-outline" size={80} color="#FFFFFF" />
+        <Text style={styles.profileName}>Naruto Uzumaki</Text>
+        <TouchableOpacity>
+          <Text style={styles.viewProfileText}>view Profile</Text>
+        </TouchableOpacity>
+      </View>
 
-    return (
-        <View style={styles.container}>
-            <View style={styles.form}>
-                <Text style={styles.formTitles}>Receipt ID</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Instead of QR code, enter Receipt ID"
-                    onChangeText={(text) => setReceipt(text)}
-                    value={Receipt}
-                />
-            </View>
-            <View style={styles.form}>
-                <Text style={styles.formTitles}>Dead</Text>
-                <Switch
-                    trackColor={{ false: "#767577", true: "#00cc44" }}
-                    thumbColor={isDead ? "#ccffdd" : "#f4f3f4"}
-                    onValueChange={(value) => setIsDead(value)}
-                    value={isDead}
-                />
-            </View>
-            <View>
-                <Text style={styles.formTitles}>
-                    Receipt Health: {ReceiptHealth}
-                </Text>
-                <View style={{ alignItems: "center" }}>
-                    <Slider
-                        style={{ width: 300, height: 50 }}
-                        minimumValue={0}
-                        maximumValue={10}
-                        step={1}
-                        minimumTrackTintColor="#00cc44"
-                        maximumTrackTintColor="#006622"
-                        thumbTintColor="#00cc44"
-                        value={ReceiptHealth}
-                        onValueChange={(value) => setReceiptHealth(value)}
-                    />
-                </View>
-            </View>
-            <Button
-                onPress={addReceipt}
-                title="Add Receipt"
-                disabled={Receipt === ""}
-            />
-        </View>
-    );
+      {/* Menu Options */}
+      <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
+        <Text style={styles.menuItemText}>HOME</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
+        <Text style={styles.menuItemText}>GROUPS</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToScan} style={styles.menuItem}>
+        <Text style={styles.menuItemText}>SCAN RECEIPT</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
+        <Text style={styles.menuItemText}>PAY</Text>
+      </TouchableOpacity>
+
+      {/* Footer Icons */}
+      <View style={styles.footer}>
+        <Icon name="bulb-outline" size={30} color="#FFFFFF" />
+        <Icon name="qr-code-outline" size={30} color="#FFFFFF" />
+      </View>
+    </View>
+  );
 };
 
-export default ReceiptDataForm;
-
 const styles = StyleSheet.create({
-    container: {
-        marginHorizontal: 20,
-    },
-
-    form: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginVertical: 20,
-    },
-
-    formTitles: {
-        marginRight: 10,
-    },
-
-    input: {
-        borderWidth: 1,
-        borderColor: "#2F5233",
-        backgroundColor: "#e6ffe6",
-        height: 40,
-        borderRadius: 4,
-        flex: 1,
-        padding: 10,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#4B4BFD',
+  },
+  profileSection: {
+    alignItems: 'center',
+    marginVertical: 40,
+  },
+  profileName: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginTop: 10,
+  },
+  viewProfileText: {
+    color: '#FFFFFF',
+    textDecorationLine: 'underline',
+  },
+  menuItem: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginVertical: 10,
+    borderRadius: 10, 
+  },
+  menuItemText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
+
+export default ReceiptDataForm;
