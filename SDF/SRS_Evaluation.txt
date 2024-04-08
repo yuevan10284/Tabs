@@ -77,3 +77,10 @@ my revision example above.
 
 Make the changes as suggested above, including many more requirements for
 the second submission and you'll get the full 10% on this document.
+
+=============================================================================
+SECOND EVALUATION:
+
+your score:  9% out of 10% which is an A-minus
+
+No updates done to SRS.
