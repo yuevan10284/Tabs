@@ -23,8 +23,9 @@ export default function App() {
                     component={ReceiptDataForm}
                     options={{ headerShown: false }} 
                 />
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="SignUp" component={SignUpScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+                <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
+
                 <Stack.Screen 
                     name="ScanReceiptScreen" 
                     component={ScanReceiptScreen} 

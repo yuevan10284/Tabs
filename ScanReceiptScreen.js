@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { RNCamera } from 'react-native-camera';
-import Icon from 'react-native-vector-icons/Ionicons';
+//import { RNCamera } from 'react-native-camera';
+//import Icon from 'react-native-vector-icons/Ionicons';
 
 const ScanReceiptScreen = ({ navigation }) => {
   const takePicture = async (camera) => {
