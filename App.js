@@ -6,6 +6,7 @@ import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import SignUpScreen from "./SignUpScreen";
 import ScanReceiptScreen from "./ScanReceiptScreen"; // Import ScanReceiptScreen
+import Groups from "./Groups";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,12 +26,13 @@ export default function App() {
                 />
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
                 <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
-
+                <Stack.Screen name="Groups" component={Groups} options={{ headerShown: false }} />
                 <Stack.Screen 
                     name="ScanReceiptScreen" 
                     component={ScanReceiptScreen} 
                     options={{ headerShown: false }} 
                 />
+                
             </Stack.Navigator>
         </NavigationContainer>
     );

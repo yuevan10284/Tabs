@@ -5,7 +5,7 @@ const ReceiptDataForm = ({ navigation }) => {
   
   // Function placeholders for menu options
   const goToGroups = () => {
-    // navigation.navigate('GroupChats');
+    navigation.navigate('Groups');
   };
 
   const goToScan = () => {
@@ -31,7 +31,7 @@ const ReceiptDataForm = ({ navigation }) => {
       <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
         <Text style={styles.menuItemText}>HOME</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
+      <TouchableOpacity onPress={goToGroups} style={styles.menuItem}>
         <Text style={styles.menuItemText}>GROUPS</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={goToScan} style={styles.menuItem}>
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4B4BFD',
+    
   },
   profileSection: {
     alignItems: 'center',
