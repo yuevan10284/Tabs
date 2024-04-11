@@ -16,6 +16,10 @@ const ReceiptDataForm = ({ navigation }) => {
     // navigation.navigate('PayLater');
   };
 
+  const goToHomeScreen = () => {
+    navigation.navigate('HomeScreen');
+  };
+
   return (
     <View style={styles.container}>
       {/* Profile Section */}
@@ -39,6 +43,9 @@ const ReceiptDataForm = ({ navigation }) => {
       </TouchableOpacity>
       <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
         <Text style={styles.menuItemText}>PAY</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goToHomeScreen} style={styles.menuItem}>
+        <Text style={styles.menuItemText}>SIGN OUT</Text>
       </TouchableOpacity>
 
       {/* Footer Icons */}
