@@ -3,25 +3,36 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList, TextInput } from 'r
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Groups = ({ navigation }) => {
-  const [groups, setGroups] = useState([
-    // Dummy data for the groups list
-    { id: '1', name: 'CAB RIDE LOL' },
-    { id: '2', name: 'BRUNCH' },
-    { id: '3', name: 'FAMILY DINNER' },
-    { id: '4', name: 'CAFE UNI' },
-    { id: '5', name: 'BFFS MEET UP' },
-  ]);
+  const originalGroups = [
+    { id: '1', name: 'CAB RIDE LOL', participants: 3, price: '$24.78' },
+    { id: '2', name: 'BRUNCH', participants: 5, price: '$42.30' },
+    { id: '4', name: 'COSTCO SPLIT', participants: 2, price: '$103.47' },
+  ];
+  
+  const [groups, setGroups] = useState(originalGroups);
   const [searchQuery, setSearchQuery] = useState('');
-
+  
   const handleSearch = (text) => {
     setSearchQuery(text);
-    // Add the search functionality here if needed
+    if (!text.trim()) {
+      setGroups(originalGroups);
+      return;
+    }
+    const formattedQuery = text.toLowerCase();
+    const filteredGroups = originalGroups.filter(group => {
+      return group.name.toLowerCase().includes(formattedQuery);
+    });
+    setGroups(filteredGroups);
   };
 
+  
   const renderItem = ({ item }) => (
     <View style={styles.groupItem}>
       <View style={styles.iconPlaceholder} />
-      <Text style={styles.groupName}>{item.name}</Text>
+      <View style={styles.groupInfo}>
+        <Text style={styles.groupName}>{item.name}</Text>
+        <Text style={styles.groupDetails}>{item.participants} people - {item.price}</Text>
+      </View>
     </View>
   );
 
@@ -31,13 +42,13 @@ const Groups = ({ navigation }) => {
       <Icon name="arrow-back" size={30} color="#FFFFFF" onPress={() => navigation.navigate('ReceiptDataForm')} />
         <Text style={styles.title}>GROUPS</Text>
         <TouchableOpacity style={styles.addButton} onPress={() => { /* Handle create group */ }}>
-          <Icon name="add" size={24} color="#FFFFFF" />
+          <Icon name="add" size={30} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
       <TextInput
         style={styles.searchBar}
         placeholder="Search Groups"
-        placeholderTextColor="#ccc" // Placeholder text color
+        placeholderTextColor="#000000" // Placeholder text color
         onChangeText={handleSearch}
         value={searchQuery}
       />
@@ -57,6 +68,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   header: {
+    paddingTop: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -71,6 +83,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     // Style for add button
+    fontSize: 25,
   },
   searchBar: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -78,14 +91,23 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#f0f0f0',
     borderRadius: 20,
+    color: '#000000',
+  },
+  groupDetails: {
+    fontSize: 16,
     color: '#FFFFFF',
   },
   groupItem: {
-    padding: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    backgroundColor: '#6B81FF', 
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginVertical: 5, 
+    borderRadius: 10,
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   iconPlaceholder: {
     width: 50,
@@ -96,6 +118,7 @@ const styles = StyleSheet.create({
   },
   groupName: {
     fontSize: 18,
+    color: '#FFFFFF',
   },
 });
 
