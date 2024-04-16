@@ -8,6 +8,9 @@ import SignUpScreen from "./SignUpScreen";
 import ScanReceiptScreen from "./ScanReceiptScreen"; // Import ScanReceiptScreen
 import Groups from "./Groups";
 
+import { enableScreens } from "react-native-screens";
+
+enableScreens();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -22,17 +25,28 @@ export default function App() {
                 <Stack.Screen
                     name="ReceiptDataForm"
                     component={ReceiptDataForm}
-                    options={{ headerShown: false }} 
+                    options={{ headerShown: false }}
                 />
-                <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
-                <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="Groups" component={Groups} options={{ headerShown: false }} />
-                <Stack.Screen 
-                    name="ScanReceiptScreen" 
-                    component={ScanReceiptScreen} 
-                    options={{ headerShown: false }} 
+                <Stack.Screen
+                    name="Login"
+                    component={LoginScreen}
+                    options={{ headerShown: false }}
                 />
-                
+                <Stack.Screen
+                    name="SignUp"
+                    component={SignUpScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Groups"
+                    component={Groups}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="ScanReceiptScreen"
+                    component={ScanReceiptScreen}
+                    options={{ headerShown: false }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -1,59 +1,54 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { Camera } from "expo-camera";
+import React from "react";
+import { useEffect } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { useCameraPermission } from "react-native-vision-camera";
 //import { RNCamera } from 'react-native-camera';
 //import Icon from 'react-native-vector-icons/Ionicons';
 
 const ScanReceiptScreen = ({ navigation }) => {
-  const takePicture = async (camera) => {
-    try {
-      const options = { quality: 0.5, base64: true };
-      const data = await camera.takePictureAsync(options);
-      // data.uri contains the image path
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    const { hasPermission, requestPermission } = useCameraPermission();
+    const device = useCameraPermission("back");
+    console.log("hasPermission", hasPermission);
 
-  return (
-    <View style={styles.container}>
-      <RNCamera
-        style={styles.preview}
-        type={RNCamera.Constants.Type.back}
-        flashMode={RNCamera.Constants.FlashMode.off}
-        captureAudio={false} // Add this line if you are not recording videos
-      >
-        {({ camera, status }) => {
-          if (status !== 'READY') return null;
-          return (
-            <View style={styles.cameraFooter}>
-              <Icon name="close-circle-outline" size={50} color="#FFFFFF" onPress={() => navigation.goBack()} />
-              <Icon name="camera-outline" size={50} color="#FFFFFF" onPress={() => takePicture(camera)} />
-              <Icon name="checkmark-circle-outline" size={50} color="#FFFFFF" />
-              {/* Implement functionality to use the picture after taking it */}
-            </View>
-          );
-        }}
-      </RNCamera>
-    </View>
-  );
+    useEffect(() => {
+        requestPermission();
+    }, [hasPermission]);
+
+    if (!hasPermission) {
+        return <ActivityIndicator />;
+    }
+
+    if (!device) {
+        return <Text>camera not found</Text>;
+    }
+    return (
+        <View style={styles.container}>
+            <Camera
+                style={StyleSheet.absoluteFill}
+                device={device}
+                isActive={true}
+            />
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#4B4BFD',
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  cameraFooter: {
-    flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 20,
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#4B4BFD",
+    },
+    preview: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
+    },
+    cameraFooter: {
+        flex: 0,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 20,
+    },
 });
 
 export default ScanReceiptScreen;
