@@ -32,7 +32,7 @@ const SignUpScreen = () => {
       <TouchableOpacity 
         style={styles.backButton} 
         onPress={() => navigation.goBack()}>
-        <Icon name="arrow-back" size={30} color="#4B4BFD" />
+        <Icon name="arrow-back" size={40} color="#4B4BFD" />
       </TouchableOpacity>
       
       <Text style={styles.logo}>Tabs</Text>
@@ -103,6 +103,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     left: 10,
+    padding: 15,
+    marginTop: 40,
   },
   textButton: {
     marginTop: 20,
