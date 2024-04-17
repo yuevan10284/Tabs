@@ -7,6 +7,7 @@ import LoginScreen from "./LoginScreen";
 import SignUpScreen from "./SignUpScreen";
 import ScanReceiptScreen from "./ScanReceiptScreen"; // Import ScanReceiptScreen
 import Groups from "./Groups";
+import Profile from "./Profile";
 
 import { enableScreens } from "react-native-screens";
 
@@ -46,6 +47,11 @@ export default function App() {
                     name="ScanReceiptScreen"
                     component={ScanReceiptScreen}
                     options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Profile"
+                    component={Profile}
+                    options={{ headerShown: false }} // Optionally add this if you don't want a header
                 />
             </Stack.Navigator>
         </NavigationContainer>
