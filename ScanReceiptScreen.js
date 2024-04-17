@@ -1,6 +1,4 @@
-import { Camera } from "expo-camera";
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
     View,
     Text,
@@ -8,25 +6,34 @@ import {
     TouchableOpacity,
     ActivityIndicator,
 } from "react-native";
-import { useCameraPermission } from "react-native-vision-camera";
-import Icon from "react-native-vector-icons/Ionicons"; // Ensure you've imported Icon
+import { Camera } from "expo-camera";
+import { Ionicons } from "@expo/vector-icons";
 
 const ScanReceiptScreen = ({ navigation }) => {
-    const { hasPermission, requestPermission } = useCameraPermission();
-    const device = useCameraPermission("back");
-    console.log("hasPermission", hasPermission);
+    const [hasPermission, setHasPermission] = useState(null);
+    const cameraRef = useRef(null);
 
     useEffect(() => {
-        requestPermission();
-    }, [hasPermission]);
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === "granted");
+        })();
+    }, []);
 
-    if (!hasPermission) {
-        return <ActivityIndicator />;
+    if (hasPermission === null) {
+        return <ActivityIndicator size="large" />;
     }
 
-    if (!device) {
-        return <Text>Camera not found</Text>;
+    if (hasPermission === false) {
+        return <Text>No access to camera</Text>;
     }
+
+    const onTakePicturePressed = async () => {
+        if (cameraRef.current) {
+            const photo = await cameraRef.current.takePictureAsync();
+            console.log("photo", photo);
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -34,13 +41,26 @@ const ScanReceiptScreen = ({ navigation }) => {
                 style={styles.backButton}
                 onPress={() => navigation.goBack()}
             >
-                <Icon name="arrow-back-outline" size={30} color="#FFFFFF" />
+                <Ionicons name="arrow-back-outline" size={30} color="#FFFFFF" />
             </TouchableOpacity>
             <Camera
-                style={StyleSheet.absoluteFill}
-                device={device}
-                isActive={true}
-            />
+                ref={cameraRef}
+                style={StyleSheet.absoluteFillObject}
+                type={Camera.Constants.Type.back}
+            >
+                <View style={styles.cameraFooter}>
+                    <TouchableOpacity
+                        onPress={onTakePicturePressed}
+                        style={styles.captureButton}
+                    >
+                        <Ionicons
+                            name="camera-outline"
+                            size={30}
+                            color="#FFFFFF"
+                        />
+                    </TouchableOpacity>
+                </View>
+            </Camera>
         </View>
     );
 };
@@ -48,24 +68,27 @@ const ScanReceiptScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#4B4BFD",
+        backgroundColor: "#000",
     },
     backButton: {
         position: "absolute",
-        top: 40,
+        top: 60,
         left: 20,
         zIndex: 10, // Ensure the button is clickable over the camera view
     },
-    preview: {
+    cameraFooter: {
         flex: 1,
         justifyContent: "flex-end",
         alignItems: "center",
+        marginBottom: 50,
     },
-    cameraFooter: {
-        flex: 0,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        padding: 20,
+    captureButton: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: "#fff",
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
 
