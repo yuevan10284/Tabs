@@ -26,8 +26,8 @@ const ReceiptDataForm = ({ navigation }) => {
       <View style={styles.profileSection}>
         <Icon name="person-circle-outline" size={80} color="#FFFFFF" />
         <Text style={styles.profileName}>Naruto Uzumaki</Text>
-        <TouchableOpacity>
-          <Text style={styles.viewProfileText}>view Profile</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Text style={styles.viewProfileText}>View Profile</Text>
         </TouchableOpacity>
       </View>
 
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
   profileSection: {
     alignItems: 'center',
     marginVertical: 40,
+    paddingTop: 20,
   },
   profileName: {
     fontSize: 22,
