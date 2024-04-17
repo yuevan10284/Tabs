@@ -1,4 +1,5 @@
 # Tabs Mobile Application
+
 This mobile application allows users to easily split and assign items in a bill to each other by simply taking a picutre or scanning a reciept!
 
 <p>
@@ -17,14 +18,18 @@ This mobile application allows users to easily split and assign items in a bill 
 </p>
 
 ## 🔗 Developers
-* [@Evan Yu](https://github.com/yuevan10284)
-* [@Owen Hunger](https://github.com/ohunger)
-* [@Mitchell Cootauco](https://github.com/Mcootauc)
-* [@Connor Savage](https://github.com/connorsavage)
+
+-   [@Evan Yu](https://github.com/yuevan10284)
+-   [@Owen Hunger](https://github.com/ohunger)
+-   [@Mitchell Cootauco](https://github.com/Mcootauc)
+-   [@Connor Savage](https://github.com/connorsavage)
 
 ## 🚀 How to use
 
-- Install packages with `yarn` or `npm install`.
-  - If you have native iOS code run `npx pod-install`
-- Run `yarn start` or `npm start` to start the bundler.
+-   Install packages with `yarn` or `npm install`.
+    -   If you have native iOS code run `npx pod-install`
+-   Run `yarn start` or `npm start` to start the bundler.
 
+-   cd ios
+-   pod install
+-   npx expo run:ios
