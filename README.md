@@ -32,4 +32,5 @@ This mobile application allows users to easily split and assign items in a bill 
 
 -   cd ios
 -   pod install
+-   cd ..
 -   npx expo run:ios
