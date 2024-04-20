@@ -32,9 +32,6 @@ const ReceiptDataForm = ({ navigation }) => {
       </View>
 
       {/* Menu Options */}
-      <TouchableOpacity onPress={() => {}} style={styles.menuItem}>
-        <Text style={styles.menuItemText}>HOME</Text>
-      </TouchableOpacity>
       <TouchableOpacity onPress={goToGroups} style={styles.menuItem}>
         <Text style={styles.menuItemText}>GROUPS</Text>
       </TouchableOpacity>
