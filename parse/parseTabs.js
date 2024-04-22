@@ -1,12 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const Tesseract = require('tesseract.js');
-//npm install fs and tesseract i think. then you can just do node parseTabs.js
 
-
-
-
-// Function to extract text from image using Tesseract.js
+// Asynchronous function to extract text from an image using Tesseract.js
 async function extractTextFromImage(imagePath) {
     try {
         const { data: { text } } = await Tesseract.recognize(
@@ -16,10 +12,9 @@ async function extractTextFromImage(imagePath) {
         );
         return text.trim();
     } catch (error) {
-        throw new Error('Text extraction failed:', error);
+        throw new Error(`Text extraction failed: ${error}`);
     }
 }
-
 
 // Function to parse items and prices from extracted text
 function parseItemsAndPrices(text) {
@@ -37,20 +32,18 @@ function parseItemsAndPrices(text) {
     return itemsAndPrices;
 }
 
-
-// Function to create a directory
-function createDirectory(directoryPath) {
+// Asynchronous function to create a directory
+async function createDirectory(directoryPath) {
     if (!fs.existsSync(directoryPath)) {
-        fs.mkdirSync(directoryPath);
+        fs.mkdirSync(directoryPath, { recursive: true });
     }
 }
 
-// Function to process all JPEG files in a folder
+// Asynchronous function to process all JPEG files in a folder
 async function processJPEGFilesInFolder(folderPath) {
     try {
-        // Create the output directory for extracted text files
         const extractedTextDirectory = path.join(folderPath, 'extractedText');
-        createDirectory(extractedTextDirectory);
+        await createDirectory(extractedTextDirectory);
 
         const files = fs.readdirSync(folderPath);
         for (const file of files) {
@@ -68,7 +61,7 @@ async function processJPEGFilesInFolder(folderPath) {
             }
         }
     } catch (error) {
-        console.error('Error:', error.message);
+        console.error(`Error processing files in folder: ${error.message}`);
     }
 }
 
