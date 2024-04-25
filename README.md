@@ -2,6 +2,12 @@
 
 This mobile application allows users to easily split and assign items in a bill to each other by simply taking a picutre or scanning a reciept!
 
+TABS allows you to easily digitize paper receipts and split items between your friends and family. TABS utilizes camera recognition technology to parse receipt images and loads them to the app, where you can assign and split items and tax accordingly.
+
+Using React Native and other software we were able to create an easy to use app with user profiles, camera access and some history logging, however we have not been able to fully realize the OCR components into our app due to inconsistencies with tesseract that we worked on throughout the semester.
+
+Our program is a fully fleshed out app otherwise, with lots of thought and time that went towards the UI and overall look of the app. Multiple stages of developement was taken toward reworking the UX to make it easier and faster for the user. We used React Native instaed of swift because it was available to all developers on our team who might have not been as ready to use swift. Additionally, we used firebase on the backend to store user data, which includes the users groups, email password, receipts, etc. We also tried using google cloud vision and pytesseract along with tesseract ocr. Other than that we use HTML CSS and expo to build our project since not all of our members have xcode.
+
 <p>
   <!-- iOS -->
   <a href="https://itunes.apple.com/app/apple-store/id982107779">
@@ -26,11 +32,11 @@ This mobile application allows users to easily split and assign items in a bill 
 
 ## 🚀 How to use
 
--   Install packages with `yarn` or `npm install`.
-    -   If you have native iOS code run `npx pod-install`
--   Run `yarn start` or `npm start` to start the bundler.
-
--   cd ios
--   pod install
--   cd ..
+-   cd {project folder}
+-   npm install
 -   npx expo run:ios
+
+
+This may take some additional steps depending on your platform and versions, expo is a little tricky, especially on windows...
+
+We spent a ton of time on this project even though it didn't end up exactly where we wanted we are really happy with our UI work. We had a great year! ❤️
